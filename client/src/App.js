@@ -16,7 +16,7 @@ function App() {
   //get all todo
   const getAllTodo = async() => {
     try {
-      const {data} = await axios.get('https://practice-todo-mern.onrender.com/api/todo/get-todo')
+      const {data} = await axios.get('/api/todo/get-todo')
       console.log(data);
       setGetTodo(data.todos)
     } catch (error) {
@@ -28,7 +28,7 @@ function App() {
   const handleSubmit = async(e) => {
     e.preventDefault()
     try {
-      const {data} = await axios.post('https://practice-todo-mern.onrender.com/api/todo/create-todo', {todo})
+      const {data} = await axios.post('/api/todo/create-todo', {todo})
       console.log(data);
       toast.success(data.message)
       getAllTodo()
@@ -41,7 +41,7 @@ function App() {
   const handleUpdate = async(e) => {
     e.preventDefault()
     try {
-      const {data} = await axios.put(`https://practice-todo-mern.onrender.com/api/todo/update-todo/${selected._id}`,{todo: editTodo})
+      const {data} = await axios.put(`/api/todo/update-todo/${selected._id}`,{todo: editTodo})
       console.log(data);
       toast.success(data.message)
       setSelected(null)
@@ -55,7 +55,7 @@ function App() {
   //delete todo
   const handleDelete = async(id) => {
     try {
-      const {data} = await axios.delete(`https://practice-todo-mern.onrender.com/api/todo/delete-todo/${id}`)
+      const {data} = await axios.delete(`/api/todo/delete-todo/${id}`)
       console.log(data);
       toast.success(data.message)
       getAllTodo()
